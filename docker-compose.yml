@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+  mongo:
+    image : mongo
+    container_name: mongo
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./data/mongo/database:/data/db
+    ports:
+      - 27017:27017
+  app:
+    tty: true
+    stdin_open: true
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "9292:9292"
+      - "4567:4567"
+    command: 'bundle exec rackup -s puma -p 4567 -o "0.0.0.0"'
+    depends_on:
+      - redis
+      - mongo
