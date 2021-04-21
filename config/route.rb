@@ -33,4 +33,12 @@ class Route < ::Sinatra::Base
   get '/checks/no_relations' do
     ::NoRelations::ChecksController.new(params).index
   end
+
+  get '/checks/extras/events/producer' do
+    ::Extras::Events::ChecksController.new(params).producer
+  end
+
+  get '/checks/extras/events/consumer' do
+    ::Extras::Events::ChecksController.new(params).consumer
+  end
 end

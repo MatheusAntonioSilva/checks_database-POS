@@ -8,6 +8,7 @@ Aplicação construida para validação de aula de pós graduação relacionado 
   - Persistência de dados em cache
   - Persistência de escrita em um banco relacional
   - Leitura em banco não relacional
+  - Além da atividade extra, ***"atualização de dados de leitura usando persistência através de eventos"*** realizado por meio do uso do Kafka
 --- 
 
 ### Instalação e Setup da Aplicação
@@ -31,6 +32,9 @@ rake db:seed
 - Para validar ***- Persistência de dados em cache*** acesse: `/checks/caches`
 - Para validar ***Persistência de escrita em um banco relacional*** acesse `/checks/relations/writing` e `/checks/relations/reading` para validar a escrita
 - Para validar ***Leitura em banco não relacional*** acesse `/checks/no_relations`
+- Para validar ***Atualização de dados de leitura usando persistência através de eventos"*** acesse:
+  - `/checks/extras/events/producer` para produzir o evento com o ID de um registro
+  - `/checks/extras/events/consumer` para consumir o evento com o ID deste registro, fazer a leitura e atualizar o dado.
 
 ### Para mais detalhes
 
